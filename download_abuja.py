@@ -16,6 +16,17 @@ def main():
     ox.save_graphml(G, filepath=out_file)
     print(f"Saved network data to {out_file}.")
     
+    # Export for QGIS (GeoPackage)
+    pkg_file = "abuja_network.gpkg"
+    ox.save_graph_geopackage(G, filepath=pkg_file)
+    print(f"Saved GeoPackage for QGIS to {pkg_file}.")
+    
+    # Export for Kepler.gl (GeoJSON)
+    nodes, edges = ox.graph_to_gdfs(G)
+    nodes.to_file("abuja_nodes.geojson", driver="GeoJSON")
+    edges.to_file("abuja_edges.geojson", driver="GeoJSON")
+    print("Saved GeoJSON files for Kepler.gl.")
+    
     # Plot and save a rendering of the network
     fig, ax = ox.plot_graph(G, show=False, close=True, node_size=0, edge_linewidth=0.5, bgcolor="#111111", edge_color="#ffffff")
     img_file = "abuja_network.png"
