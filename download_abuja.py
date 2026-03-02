@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def main():
     center_point = (9.0765, 7.3986)
-    dist_meters = 15000
+    dist_meters = 30000
     print(f"Downloading street network for Abuja around {center_point} with a radius of {dist_meters}m...")
     
     # Download the street network for driving
